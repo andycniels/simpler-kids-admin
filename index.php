@@ -176,10 +176,10 @@
                     <div class="card card-inverse card-success o-hidden h-100">
                         <div class="card-block">
                             <div class="card-block-icon">
-                                <i class="fa fa-fw fa-list"></i>
+                                <i class="fa fa-users" aria-hidden="true"></i>
                             </div>
                             <div class="mr-5">
-                                11 New Tasks!
+                                Kunder
                             </div>
                         </div>
                         <a href="#" class="card-footer clearfix small z-1">

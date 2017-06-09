@@ -15,10 +15,10 @@
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"><i class="fa fa-fw fa-wrench"></i> Abonnement status</a>
                     <ul class="sidebar-second-level collapse" id="collapseComponents">
                         <li>
-                            <a href="#">Rediger størrelser</a>
+                            <a href="size.php">Rediger størrelser</a>
                         </li>
                         <li>
-                            <a href="#">Rediger priser</a>
+                            <a href="price.php">Rediger priser</a>
                         </li>
                     </ul>
                 </li>

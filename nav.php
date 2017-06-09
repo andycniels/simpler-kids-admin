@@ -6,39 +6,30 @@
         <div class="collapse navbar-collapse" id="navbarExample">
             <ul class="sidebar-nav navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    <a class="nav-link" href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-fw fa-area-chart"></i> Charts</a>
+                    <a class="nav-link" href="kunder.php"><i class="fa fa-fw fa-area-chart"></i> Kunder</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-fw fa-table"></i> Tables</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"><i class="fa fa-fw fa-wrench"></i> Components</a>
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"><i class="fa fa-fw fa-wrench"></i> Abonnement status</a>
                     <ul class="sidebar-second-level collapse" id="collapseComponents">
                         <li>
-                            <a href="#">Fixed Navigation</a>
+                            <a href="#">Rediger størrelser</a>
                         </li>
                         <li>
-                            <a href="#">Custom Card Examples</a>
-                        </li>
-                        <li>
-                            <a href="#">Blank Page</a>
-                        </li>
-                        <li>
-                            <a href="#">Login Page</a>
+                            <a href="#">Rediger priser</a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti"><i class="fa fa-fw fa-sitemap"></i> Menu Levels</a>
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti"><i class="fa fa-fw fa-sitemap"></i> Lager status</a>
                     <ul class="sidebar-second-level collapse" id="collapseMulti">
                         <li>
-                            <a href="#">Second Level Item</a>
+                            <a href="#">Rediger lager</a>
                         </li>
                         <li>
-                            <a href="#">Second Level Item</a>
+                            <a href="#">Se lager</a>
                         </li>
                         <li>
                             <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a>

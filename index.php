@@ -72,8 +72,8 @@
                                 Kunder
                             </div>
                         </div>
-                        <a href="#" class="card-footer clearfix small z-1">
-                            <span class="float-left">View Details</span>
+                        <a href="kunder.php" class="card-footer clearfix small z-1">
+                            <span class="float-left">Se kunder</span>
                             <span class="float-right"><i class="fa fa-angle-right"></i></span>
                         </a>
                     </div>

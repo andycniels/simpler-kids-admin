@@ -47,7 +47,7 @@
             <!-- Icon Cards -->
             <div class="row">
                 <div class="col-xl-3 col-sm-6 mb-3">
-                    <div class="card card-inverse card-primary o-hidden h-100">
+                    <div class="card card-inverse card-1 o-hidden h-100">
                         <div class="card-block">
                             <div class="card-block-icon">
                                 <i class="fa fa-fw fa-comments"></i>
@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <div class="col-xl-3 col-sm-6 mb-3">
-                    <div class="card card-inverse card-success o-hidden h-100">
+                    <div class="card card-inverse card-2 o-hidden h-100">
                         <div class="card-block">
                             <div class="card-block-icon">
                                 <i class="fa fa-users" aria-hidden="true"></i>
@@ -79,7 +79,7 @@
                     </div>
                 </div>
                 <div class="col-xl-3 col-sm-6 mb-3">
-                    <div class="card card-inverse card-warning o-hidden h-100">
+                    <div class="card card-inverse card-3 o-hidden h-100">
                         <div class="card-block">
                             <div class="card-block-icon">
                                 <i class="fa fa-fw fa-shopping-cart"></i>
@@ -95,7 +95,7 @@
                     </div>
                 </div>
                 <div class="col-xl-3 col-sm-6 mb-3">
-                    <div class="card card-inverse card-danger o-hidden h-100">
+                    <div class="card card-inverse card-4 o-hidden h-100">
                         <div class="card-block">
                             <div class="card-block-icon">
                                 <i class="fa fa-fw fa-support"></i>

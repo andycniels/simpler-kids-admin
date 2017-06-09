@@ -92,8 +92,8 @@ var myLineChart = new Chart(ctx, {
         labels: ["Det nye", "Den miljøbenlige", "På pause"],
         datasets: [{
             label: "Antal",
-            backgroundColor: "rgba(2,117,216,1)",
-            borderColor: "rgba(2,117,216,1)",
+            backgroundColor: ["#6cd1ea", "#facfd7", "#434446"],
+            borderColor: "rgb(108, 108, 108)",
             data: [60, 53, 32],
         }],
     },

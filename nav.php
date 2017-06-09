@@ -2,17 +2,17 @@
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#"><img width="94px" class="img-responsive" src="img/sk.png"></a>
+        <a class="navbar-brand" href="index.php"><img width="94px" class="img-responsive" src="img/sk.png"></a>
         <div class="collapse navbar-collapse" id="navbarExample">
             <ul class="sidebar-nav navbar-nav">
                 <li class="nav-item active">
                     <a class="nav-link" href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="kunder.php"><i class="fa fa-male" aria-hidden="true"></i> Kunder</a>
+                    <a class="nav-link" href="kunder.php"><i class="fa fa-users" aria-hidden="true"></i> Kunder</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"><i class="fa fa-fw fa-wrench"></i> Abonnement status</a>
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"><i class="fa fa-recycle" aria-hidden="true"></i> Abonnement status</a>
                     <ul class="sidebar-second-level collapse" id="collapseComponents">
                         <li>
                             <a href="size.php">Rediger størrelser</a>
@@ -23,10 +23,10 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti"><i class="fa fa-fw fa-sitemap"></i> Lager status</a>
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti"><i class="fa fa-archive" aria-hidden="true"></i> Lager</a>
                     <ul class="sidebar-second-level collapse" id="collapseMulti">
                         <li>
-                            <a href="#">Rediger lager</a>
+                            <a href="lager-status.php">Lager status</a>
                         </li>
                         <li>
                             <a href="#">Se lager</a>

@@ -44,6 +44,21 @@
             include 'breadcrumbs.php';
             ?>
 
+            <!-- add size -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fa fa-table"></i> Tilføj en størrelse
+                </div>
+                <form class="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-default">Tilføj</button>
+                </form>
+                <div class="card-footer small text-muted">
+                    Simplar-Kids
+                </div>
+            </div>
 
 
 <!-- Example Tables Card -->
@@ -86,7 +101,7 @@
                 </div>
             </div>
             
-</div>
+        </div>
         <!-- /.container-fluid -->
 
     </div>

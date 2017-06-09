@@ -124,13 +124,13 @@
                                 </div>
                                 <div class="col-sm-4 text-center">
                                     <hr class="hidden-sm-up">
-                                    <div class="h4 mb-0 text-primary">DKK: 34,693</div>
+                                    <div class="h4 mb-0 text-1">DKK: 34,693</div>
                                     <div class="small text-muted">Det nye</div>
                                     <hr>
-                                    <div class="h4 mb-0 text-warning">DKK: 18,474</div>
+                                    <div class="h4 mb-0 text-2">DKK: 18,474</div>
                                     <div class="small text-muted">Det miljøvenlige</div>
                                     <hr>
-                                    <div class="h4 mb-0 text-success">DKK: 18,474</div>
+                                    <div class="h4 mb-0 text-3">DKK: 18,474</div>
                                     <div class="small text-muted">I alt: </div>
                                     <hr>
                                 </div>

@@ -9,7 +9,7 @@
                     <a class="nav-link" href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="kunder.php"><i class="fa fa-fw fa-area-chart"></i> Kunder</a>
+                    <a class="nav-link" href="kunder.php"><i class="fa fa-male" aria-hidden="true"></i> Kunder</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"><i class="fa fa-fw fa-wrench"></i> Abonnement status</a>
@@ -46,6 +46,9 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="http://aceksamen.simplar.dk/" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i> Besøg Simplar-Kids.dk</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fa fa-fw fa-sign-out"></i> Logout</a>
                 </li>

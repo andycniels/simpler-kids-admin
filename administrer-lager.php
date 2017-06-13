@@ -17,17 +17,22 @@ include 'header.php';
                     <br>
                     <p>Vælg tøjtype</p>
                     <select class="form-control">
-                        <option>Body - lang</option>
-                        <option>Det - kort</option>
-                        <option>Heldragt</option>
+                        <option>Arthur</option>
+                        <option>Benjamin</option>
+                        <option>Cecilie</option>
                     </select>
                     <br>
                     <p>Vælg Størrelse</p>
                     <select class="form-control">
-                        <option>Pærmature</option>
+                        <option>Præmatur</option>
                         <option>Newborn</option>
                         <option>56</option>
-                        <option>OSV</option>
+                        <option>62</option>
+                        <option>68</option>
+                        <option>74</option>
+                        <option>80</option>
+                        <option>86</option>
+                        <option>92</option>
                     </select>
                     <br>
                     <div class="form-group">

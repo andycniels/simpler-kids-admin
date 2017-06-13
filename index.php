@@ -60,7 +60,7 @@ include 'header.php';
                                 <i class="fa fa-globe"></i>
                             </div>
                             <div class="mr-5">
-                                13 New Tickets!
+                                CSR
                             </div>
                         </div>
                         <a href="#" class="card-footer clearfix small z-1">

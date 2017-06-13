@@ -1,127 +1,128 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>SK - admin</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom fonts for this template -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Plugin CSS -->
-    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/sb-admin.css" rel="stylesheet">
-    
-    <!-- Custom styles for Simplar-Kids admin -->
-    <link href="css/simplar.css" rel="stylesheet">
-
-</head>
-
-<body id="page-top">
-
-    <!-- Navigation -->
-    <?php
-    include 'nav.php';
-    ?>
-
-    <div class="content-wrapper py-3">
-
-        <div class="container-fluid">
-
-            <!-- Breadcrumbs -->
-            <?php
-            include 'breadcrumbs.php';
-            ?>
-
-
-
+<?php
+include 'header.php';
+?>
 <!-- table 1 -->
+
+
+ <?php
+            require_once 'dbcon.php';
+            $stmt = $link->prepare("SELECT a.id,
+                                           a.product_name,
+                                           
+                                           c.id, 
+                                           c.name, 
+                                           c.number,
+                                           
+                                           s.id,  
+                                           s.size,
+                                           s.orderBy,
+                                           
+                                           sac.abonnement_id,
+                                           sac.size_id,
+                                           sac.clothes_id,
+                                           sac.number,
+                                           sac.in_out,
+                                           sac.csr
+                                           
+                                    FROM simplar_kids_abonnement a, Simplar_Kids_clothes c, simplar_kids_size s, simplar_kids_s_a_c sac
+                                    
+                                               
+                                    WHERE a.id = sac.abonnement_id
+                                    AND c.id = sac.clothes_id         
+                                    AND s.id = sac.size_id
+                                    
+                                    
+                                    
+                                    ORDER BY c.name
+                                    ");
+                $stmt->execute();
+                $stmt->bind_result($a_id, $a_pn,
+                                   $c_id, $c_n, $c_nu,
+                                   $s_id, $s_s, $s_ob,
+                                   $sac_aid, $sac_sid, $sac_cid, $sac_nu, $sac_io, $sac_csr
+                                  );
+                
+                    while($stmt->fetch()) {
+                        if ($s_id == 0){
+                            echo 'HEJ';
+                        }
+                    ?>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Navn</th>
+                                <th>Størelse</th>
+                                <th>Antal</th>
+                                <th>Abonnement</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><?= $c_n ?></td>
+                                <td><?= $s_s ?></td>
+                                <td><?= $sac_nu ?></td>
+                                <td><?= $a_pn ?></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <?php
+                    }
+                        
+                    
+                    ?>
+
             <div class="card mb-3">
                 <div class="card-header">
-                    <i class="fa fa-table"></i> Body - Kort
+                    <i class="fa fa-table"></i> 
                 </div>
                 <div class="card-block">
                     <div class="table-responsive">
                         <table class="table table-bordered" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>Body - kort</th>
-                                    <th>Præmature</th>
-                                    <th>Newborn</th>
-                                    <th>56</th>
-                                    <th>62</th>
-                                    <th>68</th>
-                                    <th>74</th>
-                                    <th>80</th>
-                                    <th>86</th>
-                                    <th>92</th>
+                                    <th><?= $c_n ?></th>
+                                    <?php
+                                    require_once 'dbcon.php';
+                                    $stmt = $link->prepare("SELECT size FROM simplar_kids_size");
+                                    $stmt->execute();
+                                    $stmt->bind_result($size);
+                
+                                    while($stmt->fetch()) {
+                                        echo '<th>'. $size .'</th>';
+                                    }
+                                    ?>
                                     <th>I alt</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Det nye</td>
-                                    <td>300</td>
-                                    <td>200</td>
-                                    <td>500</td>
-                                    <td>600</td>
-                                    <td>300</td>
-                                    <td>700</td>
-                                    <td>799</td>
-                                    <td>799</td>
-                                    <td>799</td>
-                                    <td>799288</td>
-                                </tr>
-                                <tr>
-                                    <td>Det miljøvenlige</td>
-                                    <td>700</td>
-                                    <td>5499</td>
-                                    <td>6885</td>
-                                    <td>4888</td>
-                                    <td>4888</td>
-                                    <td>33333</td>
-                                    <td>6663</td>
-                                    <td>6663</td>
-                                    <td>6663</td>
-                                    <td>66828263</td>
-                                </tr>
-                                <tr>
-                                    <td>På Lager</td>
-                                    <td>700</td>
-                                    <td>5499</td>
-                                    <td>6885</td>
-                                    <td>4888</td>
-                                    <td>4888</td>
-                                    <td>33333</td>
-                                    <td>6663</td>
-                                    <td>6663</td>
-                                    <td>6663</td>
-                                    <td>66828263</td>
-                                </tr>
-                                <tr>
-                                    <td>Hos kunden</td>
-                                    <td>700</td>
-                                    <td>5499</td>
-                                    <td>6885</td>
-                                    <td>4888</td>
-                                    <td>4888</td>
-                                    <td>33333</td>
-                                    <td>6663</td>
-                                    <td>6663</td>
-                                    <td>6663</td>
-                                    <td>66828263</td>
-                                </tr>
+                                <?php
+                                    require_once 'dbcon.php';
+                                    $stmt = $link->prepare("SELECT a.id,
+                                                                   a.product_name,
+
+                                                                   sac.abonnement_id,
+                                                                   sac.number
+                                                               
+                                    FROM simplar_kids_abonnement a, simplar_kids_s_a_c sac
+                                    
+                                   
+                                    
+                                    WHERE a.id = sac.abonnement_id
+                                    GROUP BY a.product_name
+                                    
+                                    ");
+                                    $stmt->execute();
+                                    $stmt->bind_result($a_id, $a_pn,
+                                                       $sac_aid, $sac_nu
+                                                    );
+                
+                                    while($stmt->fetch()) {
+                                        echo '<tr>';
+                                        echo '<td>'. $a_pn .'</td>';
+                                        echo '<td>'. $sac_nu .'</td>';
+                                        echo '</tr>';
+                                    }
+                                    ?>
                             </tbody>
                         </table>
                     </div>

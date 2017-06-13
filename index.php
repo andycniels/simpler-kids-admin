@@ -57,7 +57,7 @@ include 'header.php';
                     <div class="card card-inverse card-4 o-hidden h-100">
                         <div class="card-block">
                             <div class="card-block-icon">
-                                <i class="fa fa-fw fa-support"></i>
+                                <i class="fa fa-globe"></i>
                             </div>
                             <div class="mr-5">
                                 13 New Tickets!

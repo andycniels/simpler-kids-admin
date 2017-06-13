@@ -4,22 +4,6 @@ include 'header.php';
             <!-- Icon Cards -->
             <div class="row">
                 <div class="col-xl-3 col-sm-6 mb-3">
-                    <div class="card card-inverse card-1 o-hidden h-100">
-                        <div class="card-block">
-                            <div class="card-block-icon">
-                                <i class="fa fa-fw fa-comments"></i>
-                            </div>
-                            <div class="mr-5">
-                                26 New Messages!
-                            </div>
-                        </div>
-                        <a href="#" class="card-footer clearfix small z-1">
-                            <span class="float-left">View Details</span>
-                            <span class="float-right"><i class="fa fa-angle-right"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 mb-3">
                     <div class="card card-inverse card-2 o-hidden h-100">
                         <div class="card-block">
                             <div class="card-block-icon">
@@ -35,6 +19,24 @@ include 'header.php';
                         </a>
                     </div>
                 </div>
+                
+                <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="card card-inverse card-1 o-hidden h-100">
+                        <div class="card-block">
+                            <div class="card-block-icon">
+                                <i class="fa fa-fw fa-comments"></i>
+                            </div>
+                            <div class="mr-5">
+                                26 New Messages!
+                            </div>
+                        </div>
+                        <a href="#" class="card-footer clearfix small z-1">
+                            <span class="float-left">View Details</span>
+                            <span class="float-right"><i class="fa fa-angle-right"></i></span>
+                        </a>
+                    </div>
+                </div>
+                
                 <div class="col-xl-3 col-sm-6 mb-3">
                     <div class="card card-inverse card-3 o-hidden h-100">
                         <div class="card-block">

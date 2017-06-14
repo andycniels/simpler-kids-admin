@@ -24,7 +24,7 @@ if ($edit == yes){
                     <div class='form-group'>
                         <input type='text' name='editSize' value='$name' class='form-control'>
                     </div>
-                    <input class='btn btn-default' name='edit' type='submit' value='Tilføj størrelse'>
+                    <input class='btn btn-default' name='edit' type='submit' value='Rediger størrelse'>
                 </form>
                 <div class='card-footer small text-muted'>
                     Simplar-Kids
@@ -101,7 +101,7 @@ if (isset($_POST["add"])){
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <?php
+            <?php
             require_once 'dbcon.php';
             $stmt = $link->prepare("SELECT id, size, orderBy, hide FROM simplar_kids_size WHERE hide = 0");
                 $stmt->execute();

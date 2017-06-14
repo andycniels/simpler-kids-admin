@@ -1,11 +1,63 @@
 <?php
 include 'header.php';
+$edit= $_GET['edit'];
+$id= $_GET['id'];
+$name= $_GET['pn'];
+$name = str_replace('-', ' ', $name);
+$des= $_GET['pd'];
+$des = str_replace('-', ' ', $des);
+$price= $_GET['price'];
+$imgurl= $_GET['url'];
+
+if (isset($_POST["edit"])){
+    $name = filter_input(INPUT_POST,'name');
+    $des = filter_input(INPUT_POST, 'des');
+    $price = filter_input(INPUT_POST, 'price');
+    $imgurl = filter_input(INPUT_POST, 'url');
+    
+    require_once 'dbcon.php';
+    $sql = "UPDATE simplar_kids_abonnement SET product_name=?, product_description=?, img_url=?, price=? WHERE id = $id";
+    $stmt = $link->prepare($sql);
+    $stmt->bind_param('ssss', $name, $des, $imgurl, $price);
+    $stmt->execute();
+    ?><script> window.location.replace('price.php') </script><?php   
+}
+
+if ($edit == yes){
+    echo "
+            <div class='card mb-3'>
+                <div class='card-header'>
+                    <i class='fa fa-table'></i> Rediger abonnement
+                </div>
+                <form class='form' action='#' method='POST'>
+                    <div class='form-group'>Pris
+                        <input type='text' name='price' value='$price' class='form-control'>
+                    </div>
+                    <div class='form-group'>Navn
+                        <input type='text' name='name' value='$name' class='form-control'>
+                    </div>
+                    <div class='form-group'>Beskrivelse
+                        <textarea class='form-control' name='des' rows='3'>$des</textarea>
+                    </div>
+                    <div class='form-group'>Billede URL
+                        <input type='text' name='url' value='$imgurl' name='url' class='form-control'>
+                    </div>
+                    <input class='btn btn-default' name='edit' type='submit' value='Rediger abonnement'>
+                </form>
+                <div class='card-footer small text-muted'>
+                    Simplar-Kids
+                </div>
+            </div> 
+    ";
+}
 ?>
+
+
 
 <!-- Example Tables Card -->
             <div class="card mb-3">
                 <div class="card-header">
-                    <i class="fa fa-table"></i> Rediger pris
+                    <i class="fa fa-table"></i> Rediger abonnement
                 </div>
                 <div class="card-block">
                     <div class="table-responsive">
@@ -15,7 +67,6 @@ include 'header.php';
                                     <th>Pris</th>
                                     <th>Abonnement</th>
                                     <th>Rediger</th>
-                                    <th>Slet</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -23,22 +74,28 @@ include 'header.php';
                                     <th>Pris</th>
                                     <th>Abonnement</th>
                                     <th>Rediger</th>
-                                    <th>Slet</th>
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <tr>
-                                    <td>230 kr</td>
-                                    <td>Det nye</td>
-                                    <td class="text-center"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-                                    <td class="text-center"><i class="fa fa-trash-o" aria-hidden="true"></i></td>
-                                </tr>
+                                <?php
+            require_once 'dbcon.php';
+            $stmt = $link->prepare("SELECT id, product_name, product_description, img_url, price FROM simplar_kids_abonnement");
+                $stmt->execute();
+                $stmt->bind_result($id, $pn, $pd, $iu, $p);                
+                    while($stmt->fetch()) {
+                    $pname = str_replace(' ', '-', $pn);
+                    $pdes = str_replace(' ', '-', $pd);
+                    ?>      
+                    <tr>
+                        <td><?= $p ?></td>
+                        <td><?= $pn ?></td>
+                        <td class="text-center"><a href ="price.php?id=<?=$id?>&price=<?=$p?>&pn=<?=$pname?>&pd=<?=$pdes?>&url=<?=$iu?>&edit=yes"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                    </tr>        
+                    <?php
+                    }?>    
                             </tbody>
                         </table>
                     </div>
-                </div>
-                <div class="card-footer small text-muted">
-                    Updated yesterday at 11:59 PM
                 </div>
             </div>
             

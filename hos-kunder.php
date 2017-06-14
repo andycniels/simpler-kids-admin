@@ -4,7 +4,7 @@ include 'header.php';
 <!-- table 1 -->
             <div class="card mb-3">
                 <div class="card-header">
-                    <i class="fa fa-table"></i> På lager
+                    <i class="fa fa-table"></i> Hos kunder
                 </div>
                 <div class="card-block">
                     <div class="table-responsive">
@@ -26,7 +26,7 @@ include 'header.php';
                                 </tr>
                             </tfoot>
                              <tbody>
-            <?php
+                         <?php
             require_once 'dbcon.php';
             $stmt = $link->prepare("
                 SELECT a.id,
@@ -44,7 +44,7 @@ include 'header.php';
                        sac.clothes_id,
                        sac.number
                                            
-                FROM simplar_kids_abonnement a, Simplar_Kids_clothes c, simplar_kids_size s, simplar_kids_s_a_c sac
+                FROM simplar_kids_abonnement a, Simplar_Kids_clothes c, simplar_kids_size s, simplar_kids_out sac
                                     
                 WHERE a.id = sac.abonnement_id
                 AND c.id = sac.clothes_id         

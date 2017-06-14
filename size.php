@@ -1,5 +1,38 @@
 <?php
 include 'header.php';
+$delete = $_GET['delete'];
+$edit= $_GET['edit'];
+$idURL= $_GET['id'];
+$one = 1;
+
+if ($delete == yes){
+    require_once 'dbcon.php';
+    $sql = "UPDATE simplar_kids_size SET hide=? WHERE id = $idURL";
+    $stmt = $link->prepare($sql);
+    $stmt->bind_param('s', $one);
+    $stmt->execute();
+    ?><script> window.location.replace('size.php') </script><?php
+}
+
+if ($edit == yes){
+    
+}
+
+if (isset($_POST["add"])){
+    $newSize = filter_input(INPUT_POST, 'size');
+    $d = 0;
+    if(empty($_POST["size"])){
+        $error = '<p style="color:red;">Must not be empty</p>';
+    }
+    if(!empty($_POST["size"])){
+        require_once 'dbcon.php';
+        $sql = "INSERT INTO simplar_kids_size (size, hide) VALUES (?,?)";
+        $stmt = $link->prepare($sql);                 
+        $stmt->bind_param('ss', $newSize, $d);
+        $stmt->execute();
+        ?><script> window.location.replace('size.php') </script><?php
+    }
+}
 ?>
 
             <!-- add size -->
@@ -7,11 +40,12 @@ include 'header.php';
                 <div class="card-header">
                     <i class="fa fa-table"></i> Tilføj en størrelse
                 </div>
-                <form class="form">
+                <form class="form" action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
                     <div class="form-group">
-                        <input type="text" class="form-control">
+                        <?= $error ?>
+                        <input type="text" name="size" class="form-control">
                     </div>
-                    <button type="submit" class="btn btn-default">Tilføj</button>
+                    <input class="btn btn-default" name="add" type="submit" value="Tilføj størrelse">
                 </form>
                 <div class="card-footer small text-muted">
                     Simplar-Kids
@@ -30,7 +64,6 @@ include 'header.php';
                             <thead>
                                 <tr>
                                     <th>Størrelse</th>
-                                    <th>Sorter efter</th>
                                     <th>Rediger</th>
                                     <th>Slet</th>
                                 </tr>
@@ -38,27 +71,30 @@ include 'header.php';
                             <tfoot>
                                 <tr>
                                     <th>Størrelse</th>
-                                    <th>Sorter efter</th>
                                     <th>Rediger</th>
                                     <th>Slet</th>
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <tr>
-                                    <td>Newborn</td>
-                                    <td>2</td>
-                                    <td class="text-center"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-                                    <td class="text-center"><i class="fa fa-trash-o" aria-hidden="true"></i></td>
-                                </tr>
+                                <?php
+            require_once 'dbcon.php';
+            $stmt = $link->prepare("SELECT id, size, orderBy, hide FROM simplar_kids_size WHERE hide = 0");
+                $stmt->execute();
+                $stmt->bind_result($id, $size, $ob, $h);                
+                    while($stmt->fetch()) {
+                    ?>      
+                    <tr>
+                        <td><?= $size ?></td>
+                        <td class="text-center"><a href ="size.php?edit=yes"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                        <td class="text-center"><a href ="size.php?id=<?=$id?>&delete=yes" onclick="return confirm_alert(this);"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                    </tr>        
+                    <?php
+                    }?>    
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <div class="card-footer small text-muted">
-                    Updated yesterday at 11:59 PM
-                </div>
             </div>
-            
         </div>
         <!-- /.container-fluid -->
 

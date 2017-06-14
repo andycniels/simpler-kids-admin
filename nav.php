@@ -48,7 +48,7 @@ $title = ucfirst($title);
                         }         
                         ?>           
                         ">
-                            <a href="price.php">Rediger priser</a>
+                            <a href="price.php">Rediger abonnement</a>
                         </li>
                     </ul>
                 </li>
@@ -62,7 +62,16 @@ $title = ucfirst($title);
                         }         
                         ?>            
                         ">
-                            <a href="lager-status.php">Lager status</a>
+                            <a href="lager-status.php">På lager</a>
+                        </li>
+                        <li class="
+                        <?php
+                        if ($title == "Hos kunder"){
+                            echo 'active';
+                        }         
+                        ?>            
+                        ">
+                            <a href="hos-kunder.php">Hos kunder</a>
                         </li>
                         <li class="
                         <?php

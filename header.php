@@ -25,7 +25,11 @@
     
     <!-- Custom styles for Simplar-Kids admin -->
     <link href="css/simplar.css" rel="stylesheet">
-
+    <script type="text/javascript">
+        function confirm_alert(node) {
+        return confirm("Er du sikker du at du vil slette?");
+        }
+    </script>
 </head>
 
 <body id="page-top">

@@ -3,6 +3,7 @@ include 'header.php';
 $delete = $_GET['delete'];
 $edit= $_GET['edit'];
 $idURL= $_GET['id'];
+$name= $_GET['name'];
 $one = 1;
 
 if ($delete == yes){
@@ -15,7 +16,32 @@ if ($delete == yes){
 }
 
 if ($edit == yes){
-    
+    echo "<div class='card mb-3'>
+                <div class='card-header'>
+                    <i class='fa fa-table'></i> Rediger en størrelse
+                </div>
+                <form class='form' action='#' method='POST'>
+                    <div class='form-group'>
+                        <input type='text' name='editSize' value='$name' class='form-control'>
+                    </div>
+                    <input class='btn btn-default' name='edit' type='submit' value='Tilføj størrelse'>
+                </form>
+                <div class='card-footer small text-muted'>
+                    Simplar-Kids
+                </div>
+            </div>";
+}
+
+if (isset($_POST["edit"])){
+    $editSize = filter_input(INPUT_POST, 'editSize');
+    if(!empty($_POST["editSize"])){
+        require_once 'dbcon.php';
+        $sql = "UPDATE simplar_kids_size SET size=? WHERE id = $idURL";
+        $stmt = $link->prepare($sql);
+        $stmt->bind_param('s', $editSize);
+        $stmt->execute();
+        ?><script> window.location.replace('size.php') </script><?php
+    }
 }
 
 if (isset($_POST["add"])){
@@ -34,7 +60,6 @@ if (isset($_POST["add"])){
     }
 }
 ?>
-
             <!-- add size -->
             <div class="card mb-3">
                 <div class="card-header">
@@ -85,7 +110,7 @@ if (isset($_POST["add"])){
                     ?>      
                     <tr>
                         <td><?= $size ?></td>
-                        <td class="text-center"><a href ="size.php?edit=yes"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                        <td class="text-center"><a href ="size.php?id=<?=$id?>&name=<?=$size?>&edit=yes"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
                         <td class="text-center"><a href ="size.php?id=<?=$id?>&delete=yes" onclick="return confirm_alert(this);"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                     </tr>        
                     <?php

@@ -19,6 +19,24 @@ $stmt = $link->prepare("
     $stmt->bind_result($aid, $ap, $uaid, $ua);                
         while($stmt->fetch()) {}
     $newprice = $ap * $new;
+
+    $stmt = $link->prepare("
+    SELECT a.id,
+           a.price,
+                                           
+           u.fk_a_id,
+           u.active
+                                           
+           FROM simplar_kids_abonnement a, simplar_kids_users u
+                                    
+           WHERE a.id = u.fk_a_id
+           AND active = 0         
+           AND u.fk_a_id = 1
+");
+    $stmt->execute();
+    $stmt->bind_result($aid, $ap, $uaid, $ua);                
+        while($stmt->fetch()) {}
+    $milprice = $ap * $mil;
 ?> 
                     <!-- Example Bar Chart Card -->
                     <div class="card mb-3">

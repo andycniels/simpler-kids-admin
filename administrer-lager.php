@@ -1,52 +1,116 @@
 <?php
 include 'header.php';
+if (isset($_POST["updateSK"])){
+    
+    $abo = filter_input(INPUT_POST, 'abonnement', FILTER_SANITIZE_STRING);
+    echo $abo;
+    
+    foreach($_POST['checkclothes'] as $clothes) 
+            echo $clothes;
+    
+    foreach($_POST['checksize'] as $sizes) 
+            echo $sizes; 
+    
+    $antal= filter_input(INPUT_POST, 'antal', FILTER_SANITIZE_STRING);
+    echo $antal;
+    
+    
+    
+    require_once 'dbcon.php';
+    $stmt = $link->prepare("SELECT 
+                            id
+                            FROM simplar_kids_s_a_c 
+                            WHERE clothes_id IN ($clothes)
+                            AND size_id IN ($sizes)
+                            AND abonnement_id = $abo
+                          
+                            ");
+    $stmt->execute();
+    $stmt->bind_result($id);
+
+        while($stmt->fetch()) {
+            echo '<h1>';
+            echo $id;
+            echo '</h1>';
+        }
+}
 ?>
 
 
 <!-- Tilføj tøj -->
             <div class="card mb-3">
                 <div class="card-header">
-                    <i class="fa fa-table"></i> Tilføj tøj
+                    <i class="fa fa-table"></i> Tilføj tøj eller administrere tøj
                 </div>
-                <form class="form">
+                <form class="form" method="POST">
+                    <p>Vælg handling</p>
+                    <select name="abonnement" class="form-control">
+                        <option value="">Fra lager til kunden</option>
+                        <option value="">Udefra og til lager</option>
+                    </select
                     <p>Vælg abonnement</p>
-                    <select class="form-control">
-                        <option>Det nye</option>
-                        <option>Det miljøvenlige</option>
-                    </select>
+                    <select name="abonnement" class="form-control">
+                        <option value="">Abonnement:</option>
+                        <?php
+                            require_once 'dbcon.php';
+                            $stmt = $link->prepare("SELECT id, product_name FROM simplar_kids_abonnement");
+                            $stmt->execute();
+                            $stmt->bind_result($id, $name);
+
+                                while($stmt->fetch()) {
+                                    ?>
+                            <option value="<?= $id ?>"><?= $name ?></option>
+                        <?php
+                            }
+                        ?>
+                    </select
                     <br>
                     <p>Vælg tøjtype</p>
-                    <select class="form-control">
-                        <option>Arthur</option>
-                        <option>Benjamin</option>
-                        <option>Cecilie</option>
-                    </select>
+                    <div class="checkbox">
+                    <label>
+                        <?php
+                            require_once 'dbcon.php';
+                            $stmt = $link->prepare("SELECT id, name FROM Simplar_Kids_clothes");
+                            $stmt->execute();
+                            $stmt->bind_result($id, $name);
+
+                                while($stmt->fetch()) {
+                                    ?>
+                            <input type="checkbox" name="checkclothes[]" value="<?= $id ?>"> <?= $name ?> <br>
+                        <?php
+                            }
+                        ?>
+                    </label>
+                    </div>
                     <br>
                     <p>Vælg Størrelse</p>
-                    <select class="form-control">
-                        <option>Præmatur</option>
-                        <option>Newborn</option>
-                        <option>56</option>
-                        <option>62</option>
-                        <option>68</option>
-                        <option>74</option>
-                        <option>80</option>
-                        <option>86</option>
-                        <option>92</option>
-                    </select>
+                    <label>
+                        <?php
+                            require_once 'dbcon.php';
+                            $stmt = $link->prepare("SELECT id, size, orderBy FROM Simplar_Kids_size ORDER BY orderBy");
+                            $stmt->execute();
+                            $stmt->bind_result($id, $size, $ob);
+
+                                while($stmt->fetch()) {
+                                    ?>
+                            <input type="checkbox" name="checksize[]" value="<?= $id ?>"> <?= $size ?> <br>
+                        <?php
+                            }
+                        ?>
+                    </label>
                     <br>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Antal</label>
-                        <input type="number" class="form-control">
+                        <input type="number" name="antal" class="form-control">
                     </div>
-                    <input type="submit" value="Tilføj">
+                    <input name="updateSK" type="submit" value="Tilføj">
                 </form>
             </div>
             
 <!-- Afskriv tøj -->
             <div class="card mb-3">
                 <div class="card-header">
-                    <i class="fa fa-table"></i> Afskriv tøj
+                    <i class="fa fa-table"></i> Afskriv tøj til CSR
                 </div>
                 <form class="form">
                     <p>Vælg abonnement</p>

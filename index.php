@@ -5,7 +5,8 @@ require_once 'dbcon.php';
 $stmt = $link->prepare("
     SELECT a.id,
            a.price,
-                                           
+           a.product_name,
+           
            u.fk_a_id,
            u.active
                                            
@@ -16,14 +17,15 @@ $stmt = $link->prepare("
            AND u.fk_a_id = 2
 ");
     $stmt->execute();
-    $stmt->bind_result($aid, $ap, $uaid, $ua);                
+    $stmt->bind_result($aid, $ap, $apn, $uaid, $ua);                
         while($stmt->fetch()) {}
     $newprice = $ap * $new;
 
     $stmt = $link->prepare("
     SELECT a.id,
            a.price,
-                                           
+           a.product_name,
+           
            u.fk_a_id,
            u.active
                                            
@@ -34,9 +36,10 @@ $stmt = $link->prepare("
            AND u.fk_a_id = 1
 ");
     $stmt->execute();
-    $stmt->bind_result($aid, $ap, $uaid, $ua);                
+    $stmt->bind_result($aid, $ap, $apo, $uaid, $ua);                
         while($stmt->fetch()) {}
-    $milprice = $ap * $mil;
+    $milprice = $ap * $old;
+    $total = $newprice + $milprice;
 ?> 
                     <!-- Example Bar Chart Card -->
                     <div class="card mb-3">
@@ -51,12 +54,12 @@ $stmt = $link->prepare("
                                 <div class="col-sm-4 text-center">
                                     <hr class="hidden-sm-up">
                                     <div class="h4 mb-0 text-1">DKK: <?= number_format($newprice) ?></div>
-                                    <div class="small text-muted">Det nye</div>
+                                    <div class="small text-muted"><?= $apn ?></div>
                                     <hr>
-                                    <div class="h4 mb-0 text-2">DKK: 18,474</div>
-                                    <div class="small text-muted">Det miljøvenlige</div>
+                                    <div class="h4 mb-0 text-2">DKK: <?= number_format($milprice) ?></div>
+                                    <div class="small text-muted"><?= $apo ?></div>
                                     <hr>
-                                    <div class="h4 mb-0 text-3">DKK: 18,474</div>
+                                    <div class="h4 mb-0 text-3">DKK: <?= number_format($total) ?></div>
                                     <div class="small text-muted">I alt: </div>
                                     <hr>
                                 </div>

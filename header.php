@@ -1,8 +1,24 @@
+<?php
+require_once 'dbcon.php';
+$stmt = $link->prepare("SELECT COUNT(fk_a_id) FROM simplar_kids_users WHERE fk_a_id = 2 AND active = 0");
+$stmt->execute();
+$stmt->bind_result($new);                
+    while($stmt->fetch()) {}
+
+$stmt = $link->prepare("SELECT COUNT(fk_a_id) FROM simplar_kids_users WHERE fk_a_id = 1 AND active = 0");
+$stmt->execute();
+$stmt->bind_result($old);                
+    while($stmt->fetch()) {}
+
+$stmt = $link->prepare("SELECT COUNT(active) FROM simplar_kids_users WHERE active = 1");
+$stmt->execute();
+$stmt->bind_result($active);                
+    while($stmt->fetch()) {}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -29,6 +45,12 @@
         function confirm_alert(node) {
         return confirm("Er du sikker du at du vil slette?");
         }
+    </script>
+    <!-- Indhold til diagram -->
+    <script>
+        anew = '<?php echo $new ;?>';
+        aold = '<?php echo $old ;?>';
+        aactive = '<?php echo $active ;?>';
     </script>
 </head>
 

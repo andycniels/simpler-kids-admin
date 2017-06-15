@@ -1,6 +1,25 @@
 <?php
 include 'header.php';
-?>
+
+require_once 'dbcon.php';
+$stmt = $link->prepare("
+    SELECT a.id,
+           a.price,
+                                           
+           u.fk_a_id,
+           u.active
+                                           
+           FROM simplar_kids_abonnement a, simplar_kids_users u
+                                    
+           WHERE a.id = u.fk_a_id
+           AND active = 0         
+           AND u.fk_a_id = 2
+");
+    $stmt->execute();
+    $stmt->bind_result($aid, $ap, $uaid, $ua);                
+        while($stmt->fetch()) {}
+    $newprice = $ap * $new;
+?> 
                     <!-- Example Bar Chart Card -->
                     <div class="card mb-3">
                         <div class="card-header">
@@ -13,7 +32,7 @@ include 'header.php';
                                 </div>
                                 <div class="col-sm-4 text-center">
                                     <hr class="hidden-sm-up">
-                                    <div class="h4 mb-0 text-1">DKK: 34,693</div>
+                                    <div class="h4 mb-0 text-1">DKK: <?= number_format($newprice) ?></div>
                                     <div class="small text-muted">Det nye</div>
                                     <hr>
                                     <div class="h4 mb-0 text-2">DKK: 18,474</div>

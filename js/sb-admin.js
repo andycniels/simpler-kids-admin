@@ -89,12 +89,12 @@ var ctx = document.getElementById("myBarChart");
 var myLineChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ["Det nye", "Den miljøbenlige", "På pause", "CSR"],
+        labels: ["Det nye", "Den miljøbenlige", "På pause"],
         datasets: [{
             label: "Antal",
             backgroundColor: ["#6cd1ea", "#facfd7", "#434446", "#c2eae9"],
             borderColor: "rgb(108, 108, 108)",
-            data: [anew, aold, aactive, 20],
+            data: [anew, aold, aactive],
         }],
     },
     options: {
@@ -113,7 +113,7 @@ var myLineChart = new Chart(ctx, {
             yAxes: [{
                 ticks: {
                     min: 0,
-                    max: 25,
+                    max: 15,
                     maxTicksLimit: 10
                 },
                 gridLines: {

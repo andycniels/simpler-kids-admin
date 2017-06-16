@@ -62,6 +62,8 @@ $stmt = $link->prepare("
                                     <div class="h4 mb-0 text-3">DKK: <?= number_format($total) ?></div>
                                     <div class="small text-muted">I alt: </div>
                                     <hr>
+                                    <div class="h4 mb-0">Antal tøj til CSR: <?= number_format($csr) ?></div>
+                                    <hr>
                                 </div>
                             </div>
                         </div>

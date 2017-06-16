@@ -203,7 +203,7 @@ if (isset($_POST["updateSK"])){
                         <?php
                             }
                         ?>
-                    </select
+                    </select>
                     <br>
                     <p>Vælg tøjtype</p>
                     <div class="checkbox">

@@ -62,30 +62,13 @@ $stmt = $link->prepare("
                                     <div class="h4 mb-0 text-3">DKK: <?= number_format($total) ?></div>
                                     <div class="small text-muted">I alt: </div>
                                     <hr>
+                                    <div class="h4 mb-0">CSR <?= number_format($csr) ?></div>
+                                    <hr>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer small text-muted">
-                            Updated <?php
-$hourdiff = 0; 
-$site = date("l, d F Y g:i a",time() + ($hourdiff * 3600));
-echo $site;
-?>
-                        </div>
                     </div>
 
-            <!-- Area Chart Example -->
-            <div class="card mb-3">
-                <div class="card-header">
-                    <i class="fa fa-area-chart"></i> Antal abonnenter
-                </div>
-                <div class="card-block">
-                    <canvas id="myAreaChart" width="100%" height="30"></canvas>
-                </div>
-                <div class="card-footer small text-muted">
-                    Updated yesterday at 11:59 PM
-                </div>
-            </div>
             
         </div>
         <!-- /.container-fluid -->

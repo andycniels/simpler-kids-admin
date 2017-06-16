@@ -14,6 +14,11 @@ $stmt = $link->prepare("SELECT COUNT(active) FROM simplar_kids_users WHERE activ
 $stmt->execute();
 $stmt->bind_result($active);                
     while($stmt->fetch()) {}
+
+$stmt = $link->prepare("SELECT count_csr FROM simplar_kids_csr WHERE id = 1");
+$stmt->execute();
+$stmt->bind_result($csr);                
+    while($stmt->fetch()) {}
 ?>
 <!DOCTYPE html>
 <html lang="en">

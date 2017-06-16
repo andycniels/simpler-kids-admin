@@ -19,6 +19,7 @@ include 'header.php';
                                     <th>Abonnements type</th>
                                     <th>Størrelse</th>
                                     <th>Dato for oprettelse</th>
+                                    <th>Kunde status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -30,26 +31,65 @@ include 'header.php';
                                     <th>Abonnements type</th>
                                     <th>Størrelse</th>
                                     <th>Dato for oprettelse</th>
+                                    <th>Kunde status</th>
                                     <th>Action</th>
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                    <td class="text-center"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-                                </tr>
-                                
+                            <?php
+                            require_once 'dbcon.php';
+                            $stmt = $link->prepare("
+                                SELECT a.id,
+                                       a.product_name,
+
+                                       s.id,  
+                                       s.size,
+                                       s.orderBy,
+                                       
+                                       u.ID,
+                                       u.user_nicename,
+                                       u.user_email,
+                                       u.user_registered,
+                                       u.active
+
+                                FROM simplar_kids_abonnement a, simplar_kids_size s, simplar_kids_users u
+
+                                WHERE a.id = fk_a_id        
+                                AND s.id = fk_size_id
+                                AND u.active < 3
+                                ORDER BY u.ID
+
+                                ");
+                $stmt->execute();
+                $stmt->bind_result($a_id, $a_pn,
+                                   $s_id, $s_s, $s_ob,
+                                   $u_id, $unn, $ue, $ur, $ua
+                                  );                
+                    while($stmt->fetch()) {
+                    ?>      
+                    <tr>
+                        <td><?= $u_id ?></td>
+                        <td><?= $unn ?></td>
+                        <td><?= $ue ?></td>
+                        <td><?= $a_pn ?></td>
+                        <td><?= $s_s ?></td>
+                        <td><?= $ur ?></td>
+                        <td>
+                            <?php 
+                            if ($ua == 0){echo '<p style="color:green;">Aktiv</p>';} 
+                            if ($ua == 1){echo '<p style="color:red;">Inaktiv</p>';} 
+                            ?>
+                        </td>
+                        <td class="text-center">
+                        <a href="rediger-kunder.php?id=<?=$u_id?>&name=<?=$unn?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>        
+                    <?php
+                    }
+                    ?>
                             </tbody>
                         </table>
                     </div>
-                </div>
-                <div class="card-footer small text-muted">
-                    Updated yesterday at 11:59 PM
                 </div>
             </div>
             

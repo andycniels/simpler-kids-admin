@@ -29,15 +29,19 @@ $name = $_GET['name'];
         u.zip,
         u.city,
         u.phone,
-        u.company
+        u.company,
+        u.fk_size_id,
+        u.fk_a_id
 
         FROM simplar_kids_abonnement a, simplar_kids_size s, simplar_kids_users u
         WHERE u.ID = $id
+        AND a.id = u.fk_a_id
+        AND s.id = u.fk_size_id
         ");
     $stmt->execute();
     $stmt->bind_result($a_id, $a_pn,
                        $s_id, $s_s,
-                       $u_id, $unn, $ue, $ur, $ua, $uad, $uz, $uc, $up, $company
+                       $u_id, $unn, $ue, $ur, $ua, $uad, $uz, $uc, $up, $company, $fka, $fks
                       );                
         while($stmt->fetch()) {}
         ?>
@@ -80,13 +84,30 @@ $name = $_GET['name'];
                 <label for="exampleInputEmail1">Email *</label>
                 <input style="<?= $input5 ?>" value="<?= $ue ?>" type="email" class="form-control" name="email" placeholder="<?= $error5 ?>">
             </div>
+            Abonnement
             <select name="abonnement" class="form-control">
             <option value="<?= $a_id ?>"><?= $a_pn ?></option>
             <?php
                 require_once 'dbcon.php';
-                $stmt = $link->prepare("SELECT id, product_name FROM simplar_kids_abonnement WHERE id != $a_id");
+                $stmt = $link->prepare("SELECT id, product_name FROM simplar_kids_abonnement WHERE id != $fks");
                 $stmt->execute();
                 $stmt->bind_result($id, $name);
+                       while($stmt->fetch()) {
+            ?>
+            <option value="<?= $id ?>"><?= $name ?></option>
+            <?php
+                        }
+            ?>
+            </select>
+                <br>
+            Størrelse
+            <select name="size" class="form-control">
+            <option value="<?= $s_id ?>"><?= $s_s ?></option>
+            <?php
+                require_once 'dbcon.php';
+                $stmt = $link->prepare("SELECT id, size, orderBy FROM simplar_kids_size WHERE id != $fka ORDER BY orderBy");
+                $stmt->execute();
+                $stmt->bind_result($id, $name, $ob);
                        while($stmt->fetch()) {
             ?>
             <option value="<?= $id ?>"><?= $name ?></option>

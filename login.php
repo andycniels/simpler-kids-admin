@@ -19,7 +19,7 @@ if (isset($_POST["login"])){
     $stmt->bind_param('s',$un);
     $stmt->execute();
 
-    $stmt->bind_result($id, $user_name, $pwdHash);
+    $stmt->bind_result($id, $un, $pwdHash);
     //hvis logget ind kommer man til hemmelig side
     if($stmt->fetch()){		
         $pwd = $pwd;

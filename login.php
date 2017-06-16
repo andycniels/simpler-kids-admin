@@ -1,3 +1,42 @@
+<?php
+// tjekker om der er klikket på login
+if (isset($_POST["login"])){
+   
+    $un = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+    $pwd = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+    
+    if(empty($un)){
+        $error = '<p style="color:red;">Udfyld en korrekt email</p>';
+    }
+    else if(empty($pwd)){
+        $error2 = '<p style="color:red;">Skriv et password</p>';
+    }else{
+    
+    
+    require_once 'dbcon.php';
+    $sql = "SELECT user_email, user_pass FROM simplar_kids_users WHERE user_email=?";
+    $stmt = $link->prepare($sql);
+    $stmt->bind_param('s',$un);
+    $stmt->execute();
+
+    $stmt->bind_result($id, $user_name, $pwdHash);
+    //hvis logget ind kommer man til hemmelig side
+    if($stmt->fetch()){		
+        $pwd = $pwd;
+        $pwdHash = $pwdHash;
+        if(password_verify($pwd,$pwdHash)){
+            session_start();
+            $_SESSION['id'] = $id;
+            ?> <script> window.location.replace('index.php') </script> <?php
+        }
+        if(!password_verify($pwd,$pwdHash)){
+            echo '<p style="color:red;">Wrong password, try again</p>';
+        }
+    }
+
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,16 +70,19 @@
 <body id="page-top">
 
     
-            
+   
     <div class="container">
         <div class="row">
-            <div class="">
+            <div class="logo">
                 <img src="img/sk.png">
             </div>
-            <div class="col-md-4 col-md-offset-4">
+            
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Simplar intra</h3>
+                        <h3 class="panel-title">Login på Simplar-Kids admin</h3>
                     </div>
                     <div class="panel-body">
                         <form name="login" method="post" action="">
@@ -57,8 +99,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
     </div>
+
 
 
     <!-- Bootstrap core JavaScript -->

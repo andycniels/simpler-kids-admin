@@ -66,7 +66,11 @@ $stmt = $link->prepare("
                             </div>
                         </div>
                         <div class="card-footer small text-muted">
-                            Updated yesterday at 11:59 PM
+                            Updated <?php
+$hourdiff = 0; 
+$site = date("l, d F Y g:i a",time() + ($hourdiff * 3600));
+echo $site;
+?>
                         </div>
                     </div>
 

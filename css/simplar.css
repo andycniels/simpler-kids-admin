@@ -34,7 +34,41 @@
 .text-3 {color: green;}
 
 
+/*----login----*/
 
+.col-md-12{
+    
+    max-width: 100%;
+    position: absolute;
+    padding-left: 25%;
+    padding-right: 25%;
+    padding-top: 25%;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #6cd1ea;
+    border-color: #6cd1ea;
+}
+
+.btn-success:hover {
+    color: #fff;
+    background-color: #facfd7;
+    border-color: #facfd7;
+}
+
+.logo {
+  
+max-width: 50%;
+position: absolute;
+padding-left: 25%;
+padding-right: 25%;
+}
+
+.panel-title {
+    
+    color: #c2eae9;
+}
 
 /*------------------------*/
 
